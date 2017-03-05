@@ -38,10 +38,10 @@ This set of scripts provides a way to clone an install of a linux distribution.
 
 ###Steps
 
-+ On the host: Add some files to the host system (files of tinycore linux)
++ On the host: Add some files to the host system (files of tinycore linux), by running the following commands **as root** (!! there are some commands to edit).
 ```sh
 # Set BASE_DIR to the root of this git repo
-BASE_DIR=.
+BASE_DIR=THE_ROOT_OF_THIS_REPO # EDIT THIS LINE
 # Create files for tinycore linux
 mkdir -p /opt/tcl/boot/grub
 cp $BASE_DIR/vmlinuz64 /opt/tcl/boot/
@@ -64,18 +64,18 @@ cp $base_dir/tclusb.sh /usr/local/bin/
 chmod 700 /usr/local/bin/tclusb.sh
 ```
 + Plug the USB stick
-+ On the host: run a script to install the portable system on a USB stick.
++ On the host: run a script to install the portable system on a USB stick: execute the following command
 ```sh
-/usr/local/bin/tclusb.sh
+sudo /usr/local/bin/tclusb.sh
 ```
 + Boot on the USB stick, connected to the host machine.
 + Run, it will copy the host system to the USB stick.
 ```sh
-/mnt/sdb1/scripts/load-install.sh
+sudo /mnt/sdb1/scripts/load-install.sh
 ```
 + Boot the portable system on the destination machine, and run, it will install the copy of the host system to the destination machine.
 ```sh
-/mnt/sdb1/scripts/write-install.sh
+sudo /mnt/sdb1/scripts/write-install.sh
 ```
 
 ##License
