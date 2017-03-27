@@ -1,5 +1,5 @@
 #!/bin/sh
-echo This will DESTROY all the content of your HDD (/dev/sda)!
+echo "This will DESTROY all the content of your HDD (/dev/sda)!"
 while true; do
     read -p "Do you whish to continue ?" yn
     case $yn in
