@@ -1,4 +1,13 @@
 #!/bin/sh
+echo This will DESTROY any previously loaded install on the USB stick.
+while true; do
+    read -p "Do you whish to continue ?" yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 mkdir -p /mnt/root
 mount -t ext4 /dev/sda1 /mnt/root
 mkdir -p /mnt/usbdrive

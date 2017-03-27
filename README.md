@@ -3,6 +3,7 @@
 This set of scripts provides a way to clone an install of a linux distribution.
 
 **Warning: these scripts have not been tested thoroughly. They are very fragile and there are a lot of hardcoded paths. Expect this to ruin your data.**
+**All commands are dangerous !**
 
 ## Required conditions to work
 
@@ -65,6 +66,9 @@ chmod 700 /usr/local/bin/tclusb.sh
 ```
 + Plug the USB stick
 + On the host: run a script to install the portable system on a USB stick: execute the following command
+
+**YOUR ENTER SUPER-DANGER ZONE**
+
 ```sh
 sudo /usr/local/bin/tclusb.sh
 ```
