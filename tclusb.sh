@@ -21,7 +21,7 @@ EOF
 mkfs.ext4 /dev/sdb1 -L TCLROOT -F
 mkfs.ext4 /dev/sdb2 -L TCLDATA -F
 # copy tcl files
-umount /mnt # just in case...
+umount /mnt > /dev/null 2>&1 # just in case...
 mount /dev/sdb1 /mnt
 cp -r /opt/tcl/* /mnt
 # install grub on that machine

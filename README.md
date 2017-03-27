@@ -1,10 +1,10 @@
-#LLnux-clone
+# LLnux-clone
 
 This set of scripts provides a way to clone an install of a linux distribution.
 
 **Warning: these scripts have not been tested thoroughly. They are very fragile and there are a lot of hardcoded paths. Expect this to ruin your data.**
 
-##Required conditions to work
+## Required conditions to work
 
 + There should be only two storage devices in the machine: the disk with the install, as `/dev/sda`, with the partition that will be cloned as `/dev/sda1`. The other one should be the USB stick on which the clone is made (**content of it will be wiped**).
 + The linux distro should use GRUB.
@@ -13,7 +13,7 @@ This set of scripts provides a way to clone an install of a linux distribution.
 + The USB stick should be recognized as `/dev/sdb`.
 + The hardware of both machine should be the same (or at least similar).
 
-##Usecase (and design goals) for these scripts
+## Usecase (and design goals) for these scripts
 
 + clone a manually customized OS
 + ease (and speed) of usage
@@ -21,22 +21,22 @@ This set of scripts provides a way to clone an install of a linux distribution.
 + require few to no maintenance
 + be usable without network infrastructure
 
-##Process
+## Process
 
-###Naming
+### Naming
 
 + Host system: system that will be cloned.
 + Portable system: a system installed on the USB stick
 + Destination system: the system installed on the other computer, will be identical to the host system.
 
-##Overview
+## Overview
 + The scripts are added on the host
 + Tiny core linux (TCL) is installed on the USB stick
 + Boot TCL
 + From TCL, copy content of the host's `/` partition on the USB stick (as a .tar.lz4)
 + Boot TCL on the destination system, format and copy content from USB stick to HDD (there is then a chroot step for fixing GRUB and hostname).
 
-###Steps
+### Steps
 
 + On the host: Add some files to the host system (files of tinycore linux), by running the following commands **as root** (!! there are some commands to edit).
 ```sh
@@ -60,7 +60,7 @@ for i in $(ls $BASE_DIR/tcl_scripts); do cp $BASE_DIR/tcl_scripts/$i /opt/tcl/sc
 for i in $(ls /opt/tcl/scripts); do chmod 755 /opt/tcl/scripts/$i; done
 
 # copy script to prepare usb drive
-cp $base_dir/tclusb.sh /usr/local/bin/
+cp $BASE_DIR/tclusb.sh /usr/local/bin/
 chmod 700 /usr/local/bin/tclusb.sh
 ```
 + Plug the USB stick
@@ -78,7 +78,7 @@ sudo /mnt/sdb1/scripts/load-install.sh
 sudo /mnt/sdb1/scripts/write-install.sh
 ```
 
-##License
+## License
 
 These scripts are under license Apache 2.0. See LICENSE.
 
