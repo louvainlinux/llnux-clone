@@ -41,6 +41,16 @@ mount -t ext4 /dev/sda2 /mnt/root
 cd /mnt/root
 lz4 -v -dc --no-sparse /mnt/usbdrive/root.tar.lz4 | tar xf -
 
+cat > /mnt/root/etc/fstab <<EOF
+# /etc/fstab: static file system information.
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+LABEL=ROOT	/               ext4    errors=remount-ro 0       1
+LABEL=SWAP	none            swap    sw              0       0
+EOF
+
 for i in /dev /dev/pts /proc /sys /run; do sudo mount --bind $i /mnt/root$i; done
 chroot /mnt/root/ /opt/tcl/scripts/chroot.sh
 
